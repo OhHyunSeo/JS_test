@@ -1,0 +1,19 @@
+{
+  "name": "murim-sect-test",
+  "version": "1.0.0",
+  "description": "무림 문파 테스트 - 당신의 무협 성향을 알아보세요",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve ."
+  },
+  "keywords": [
+    "무림",
+    "문파",
+    "테스트",
+    "무협",
+    "성향테스트"
+  ],
+  "author": "",
+  "license": "MIT"
+} 

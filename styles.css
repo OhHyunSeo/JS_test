@@ -1,0 +1,438 @@
+/* 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* 배경 효과 */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255, 69, 0, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 화면 전환 */
+.screen {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 시작 화면 */
+.start-content {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.title {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #ffd700, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.subtitle {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: #e0e0e0;
+}
+
+.description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #b0b0b0;
+    margin-bottom: 40px;
+}
+
+.start-btn {
+    background: linear-gradient(45deg, #ff6b6b, #ffd700);
+    color: #1a1a2e;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+}
+
+.start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 107, 107, 0.6);
+}
+
+/* 질문 화면 */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b6b, #ffd700);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    width: 0%;
+}
+
+.question-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#question-number {
+    color: #ffd700;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.question-text {
+    font-size: 1.4em;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: #ffffff;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.answer-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 20px 30px;
+    font-size: 1.1em;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.answer-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffd700;
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+}
+
+/* 결과 화면 */
+.result-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.result-container h2 {
+    font-size: 1.5em;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.result-category {
+    font-size: 1.8em;
+    color: #ffd700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.result-title {
+    font-size: 4em;
+    background: linear-gradient(45deg, #ffd700, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.result-symbol {
+    font-size: 5em;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+}
+
+.result-description {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #e0e0e0;
+    margin-bottom: 40px;
+}
+
+.result-details {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.result-details h3 {
+    color: #ffd700;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.result-details ul {
+    list-style: none;
+}
+
+.result-details li {
+    color: #e0e0e0;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.result-details li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: #ffd700;
+}
+
+.restart-btn {
+    background: linear-gradient(45deg, #ff6b6b, #ffd700);
+    color: #1a1a2e;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+}
+
+.restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 107, 107, 0.6);
+}
+
+/* 반응형 디자인 */
+
+/* 태블릿 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .title {
+        font-size: 2.5em;
+    }
+    
+    .subtitle {
+        font-size: 1.2em;
+    }
+    
+    .description {
+        font-size: 1em;
+    }
+    
+    .start-content {
+        padding: 40px 20px;
+    }
+    
+    .question-container {
+        padding: 30px 20px;
+    }
+    
+    .question-text {
+        font-size: 1.2em;
+    }
+    
+    .answer-btn {
+        padding: 15px 20px;
+        font-size: 1em;
+    }
+    
+    .result-category {
+        font-size: 1.5em;
+    }
+    
+    .result-title {
+        font-size: 3em;
+    }
+    
+    .result-symbol {
+        font-size: 4em;
+    }
+    
+    .result-container {
+        padding: 30px 20px;
+    }
+}
+
+/* 모바일 */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .title {
+        font-size: 2em;
+    }
+    
+    .subtitle {
+        font-size: 1.1em;
+    }
+    
+    .description {
+        font-size: 0.9em;
+        line-height: 1.5;
+    }
+    
+    .start-content {
+        padding: 30px 15px;
+    }
+    
+    .start-btn, .restart-btn {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+    
+    .question-container {
+        padding: 20px 15px;
+    }
+    
+    #question-number {
+        font-size: 1em;
+    }
+    
+    .question-text {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+    }
+    
+    .answer-btn {
+        padding: 12px 15px;
+        font-size: 0.95em;
+    }
+    
+    .answer-btn:hover {
+        transform: translateX(5px);
+    }
+    
+    .result-category {
+        font-size: 1.2em;
+        letter-spacing: 2px;
+    }
+    
+    .result-title {
+        font-size: 2.5em;
+    }
+    
+    .result-symbol {
+        font-size: 3.5em;
+        margin-bottom: 20px;
+    }
+    
+    .result-description {
+        font-size: 1em;
+        line-height: 1.6;
+    }
+    
+    .result-container {
+        padding: 25px 15px;
+    }
+    
+    .result-details {
+        padding: 20px 15px;
+    }
+    
+    .result-details h3 {
+        font-size: 1.1em;
+    }
+    
+    .result-details li {
+        font-size: 0.95em;
+        margin-bottom: 10px;
+        padding-left: 25px;
+    }
+}
+
+/* 초소형 모바일 */
+@media (max-width: 360px) {
+    .title {
+        font-size: 1.8em;
+    }
+    
+    .answer-btn {
+        padding: 10px 12px;
+        font-size: 0.9em;
+    }
+    
+    .result-title {
+        font-size: 2em;
+    }
+} 
